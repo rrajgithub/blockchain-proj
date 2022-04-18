@@ -1,5 +1,6 @@
 import bchain
 import data as db
+import smart as z
 
 def main(): 
     
@@ -12,5 +13,12 @@ def main():
     B.getTransactions('all')
 
 
+print("\n\n")
+
+print("manufacturer total : Rs.", z.mtot)
+print("transportation total : Rs.", z.ttot)
+print("retailer total : Rs.", z.rtot)
+
+print("\n\n")
 if __name__ == "__main__":
     main()

@@ -29,7 +29,7 @@ for i in t['transactions']:
         rtot+=di[i['product_id']]
 
 
-print("manufacturer total : Rs.", mtot)
-print("transportation total : Rs.", ttot)
-print("retailer total : Rs.", rtot)
+# print("manufacturer total : Rs.", mtot)
+# print("transportation total : Rs.", ttot)
+# print("retailer total : Rs.", rtot)
 
