@@ -5,8 +5,6 @@ from datetime import datetime
 from numpy import block
 
 
-
-
 class Block:
     def __init__(self, index, previous_hash, current_transactions, timestamp, nonce):
         self.index = index
@@ -24,6 +22,7 @@ class Block:
 
     def __str__(self):
         return str(self.__dict__)
+
 
 class Blockchain:
     def __init__(self):
@@ -61,17 +60,17 @@ class Blockchain:
         self.chain.append(block.hash)
         self.transactions.append(block.__dict__)
         return json.loads(str(block.__dict__).replace('\'', '\"'))
-       
 
     def getTransactions(self, id):
-        labels = ['manufacturer', 'transportation', 'retailer','product_profile','agent']
+        labels = ['manufacturer', 'transportation',
+                  'retailer', 'product_profile', 'agent']
         while True:
             try:
                 if id == 'all':
                     for i in range(len(self.transactions)-1):
-                        print('{}:\n{}\n'.format(
-                            labels[i], json.dumps(self.transactions[i+1],indent=3)))
-                        
+                        print('{}:\n{}\n'.format(labels[i], json.dumps(self.transactions[i+1], indent=3)))
+                        if self.transactions[i+1] :
+                            self.transactions[i+1]
                     break
                 elif type(id) == int:
                     print(self.transactions[id])

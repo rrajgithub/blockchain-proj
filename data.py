@@ -12,7 +12,8 @@ manufacturer = {
             'to': 'Transportation X',
             'message': 'This product is in good order',
             'digital signature': 'approved',
-            'flagged': 'N'
+            'flagged': 'N',
+            'amount':1500
         },
         {
             'timestamp': datetime.now().timestamp(),
@@ -23,7 +24,8 @@ manufacturer = {
             'to': 'Transportation X',
             'message': 'This product is in good order',
             'digital signature': 'approved',
-            'flagged': 'N'
+            'flagged': 'N',
+            'amount':2500
         }
     ]
 }
@@ -40,7 +42,8 @@ transportation = {
             'shopping_id': 101,
             'message': 'Product in good order. Shipped',
             'digital signature': 'approved',
-            'flagged': 'N'
+            'flagged': 'N',
+            'amount':1500
         },
         {
             'timestamp': datetime.now().timestamp(),
@@ -52,7 +55,8 @@ transportation = {
             'shopping_id': 102,
             'message': 'Product damaged',
             'digital signature': 'retailer review',
-            'flagged': 'Y'
+            'flagged': 'Y',
+            'amount':2500
         }
     ]
 }
@@ -70,7 +74,8 @@ retailer = {
             'receiving_id': 400,
             'message': 'Product in good order. Received',
             'digital signature': 'approved',
-            'flagged': 'N'
+            'flagged': 'N',
+            'amount':1500
         },
         {
             'timestamp': datetime.now().timestamp(),
@@ -82,20 +87,22 @@ retailer = {
             'receiving_id': 400,
             'message': 'Product good',
             'digital signature': 'approved',
-            'flagged': 'N'
+            'flagged': 'N',
+            'amount':2500
         },
-        {
-            'timestamp': datetime.now().timestamp(),
-            'product_id': 2,
-            'product_serial': 50002001,
-            'name': 'cotton shirt',
-            'from': 'Retailer X',
-            'to': 'RTV',
-            'receiving_id': 401,
-            'message': 'Box damaged',
-            'digital signature': 'rejected',
-            'flagged': 'Y'
-        }
+        # {
+        #     'timestamp': datetime.now().timestamp(),
+        #     'product_id': 2,
+        #     'product_serial': 50002001,
+        #     'name': 'cotton shirt',
+        #     'from': 'Retailer X',
+        #     'to': 'RTV',
+        #     'receiving_id': 401,
+        #     'message': 'Box damaged',
+        #     'digital signature': 'rejected',
+        #     'flagged': 'Y',
+        #     'amount':0
+        # }
     ]
 }
 
@@ -111,7 +118,8 @@ product_profile = {
             'message': 'Best before 6 months',
             'Reputation': '100',
             'digital signature': 'approved',
-            'flagged': 'N'
+            'flagged': 'N',
+            'amount':1500
         },
         {
             'timestamp': datetime.now().timestamp(),
@@ -122,7 +130,8 @@ product_profile = {
             'message': 'Best before 9 months',
             'Reputation': '0',
             'digital signature': 'Rejected',
-            'flagged': 'Y'
+            'flagged': 'Y',
+            'amount':2500
         },
 
     ]
