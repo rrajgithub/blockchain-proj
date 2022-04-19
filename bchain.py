@@ -1,6 +1,8 @@
 from hashlib import sha256
 import json
 from datetime import datetime
+import agent_profiles as ap
+import product_profiles as pp
 
 from numpy import block
 
@@ -54,12 +56,69 @@ class Blockchain:
         return compute_hash
 
     def add(self, data):
-        block = Block(len(self.chain),
-                      self.chain[-1], data, 'datetime.now().timestamp()', 0)
+        block = Block(len(self.chain), self.chain[-1], data, 'datetime.now().timestamp()', 0)
         block.hash = self.proof_of_work(block)
         self.chain.append(block.hash)
         self.transactions.append(block.__dict__)
+        self.calculateReputation(data['transactions'])
         return json.loads(str(block.__dict__).replace('\'', '\"'))
+
+    def calculateReputation(self, transactions):
+        for each in transactions:
+            product, agent, score, product_reputation, agent_reputation = {}, {}, 0, 0.00, 0.00
+
+            # select agent as per role
+            if each['role'] == 'manufacturer':
+                agent = ap.agentProfiles[each['manufacturerId']]
+                print('manufacturer')
+            elif each['role'] == 'transporter':
+                agent = ap.agentProfiles[each['transporterId']]
+                print('transporter')
+            elif each['role'] == 'retailer':
+                agent = ap.agentProfiles[each['retailerId']]
+                print('retailer')
+            else:
+                assert(False)
+
+            # selct product using id
+            product = pp.productProfiles[each['product_id']]
+
+
+
+            if each['flagged'] == 'N':
+                # agent score
+                score = agent['Good delivery'] + 1
+
+                # calculate product reputation
+                tsm = product['timestamp']
+                manufacture_date = datetime.fromtimestamp(tsm)
+                cur_date = datetime.now()
+                tmedelta = cur_date - manufacture_date
+                days_passed = tmedelta.days
+                days_for_expiry = product['Best before in days']
+                product_reputation = ((days_for_expiry - days_passed)/days_for_expiry)*100
+                product['Reputation'] = product_reputation
+
+            else:
+                # agent score
+                score = agent['Good delivery'] - 1
+
+                # calculate product reputation
+                product['Reputation'] -= 5
+
+            # calculate agent reputation based on score
+            print("agent score = ", score)
+            agent_reputation = (agent['Good delivery']/(agent['Good delivery'] + agent['Bad delivery']))*100
+            agent['Reputation'] = agent_reputation
+
+            print("agent reputation",agent_reputation)
+            print('product reputation',product['Reputation'])
+            print('Transcation added successfully!!')
+            print('Agent details -:')
+            print(agent)
+            print('Product details -:')
+            print(product)
+            print("\n")
 
     def getTransactions(self, id):
         labels = ['manufacturer', 'transportation',

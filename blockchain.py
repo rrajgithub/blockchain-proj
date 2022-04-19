@@ -1,6 +1,8 @@
 import bchain
 import data as db
 import smart as z
+import product_profiles as pp
+import agent_profiles as ap
 
 def main(): 
     
@@ -8,8 +10,8 @@ def main():
     a = B.add(db.manufacturer)
     b = B.add(db.transportation)
     c = B.add(db.retailer)
-    d = B.add(db.product_profile)
-    d = B.add(db.agent)
+    # d = B.add(pp.productProfiles)
+    # d = B.add(ap.agentProfiles)
     B.getTransactions('all')
 
 
