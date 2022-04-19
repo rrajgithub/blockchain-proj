@@ -13,12 +13,23 @@ def main():
     B.getTransactions('all')
 
 
-print("\n\n")
+print("\n")
 
 print("manufacturer total : Rs.", z.mtot)
 print("transportation total : Rs.", z.ttot)
 print("retailer total : Rs.", z.rtot)
 
-print("\n\n")
+print("\nGood products : ")
+
+for x in z.good:
+    print("id : ",x)
+
+print("\nDamaged products : ")
+
+for x in z.bad:
+    print("id : ",x)
+
+
+print("\n")
 if __name__ == "__main__":
     main()

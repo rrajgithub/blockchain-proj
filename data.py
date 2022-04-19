@@ -85,9 +85,9 @@ retailer = {
             'from': 'Retailer X',
             'to': 'Retail shelf',
             'receiving_id': 400,
-            'message': 'Product good',
-            'digital signature': 'approved',
-            'flagged': 'N',
+            'message': 'Product damaged',
+            'digital signature': 'Not approved',
+            'flagged': 'Y',
             'amount':2500
         },
         # {
