@@ -1,8 +1,9 @@
+from codecs import ignore_errors
+from distutils.log import error
+from email.policy import strict
 from hashlib import sha256
 import json
 from datetime import datetime
-import agent_profiles as ap
-import product_profiles as pp
 
 from numpy import block
 
@@ -64,35 +65,53 @@ class Blockchain:
         return json.loads(str(block.__dict__).replace('\'', '\"'))
 
     def calculateReputation(self, transactions):
+        read_product = open("product_data.json", "r+")
+        pp = json.load(read_product, strict=False)
+
+        read_agent = open("agent_data.json", "r+")
+        ap = json.load(read_agent, strict=False)
+
+
         for each in transactions:
-            product, agent, score, product_reputation, agent_reputation = {}, {}, 0, 0.00, 0.00
+            product, agent, product_reputation, agent_reputation = {}, {}, 0.00, 0.00
+            product_condition = "Good"
 
             # select agent as per role
             if each['role'] == 'manufacturer':
-                agent = ap.agentProfiles[each['manufacturerId']]
-                print('manufacturer')
+                agent = ap[each['manufacturerId']]
+                print('Manufacturer -:')
             elif each['role'] == 'transporter':
-                agent = ap.agentProfiles[each['transporterId']]
-                print('transporter')
+                agent = ap[each['transporterId']]
+                print('Transporter -:')
             elif each['role'] == 'retailer':
-                agent = ap.agentProfiles[each['retailerId']]
-                print('retailer')
+                agent = ap[each['retailerId']]
+                print('Retailer -:')
             else:
                 assert(False)
 
             # selct product using id
-            product = pp.productProfiles[each['product_id']]
+            # read_product = open("product_data.json",encoding='utf-8-sig', errors='ignore')
+            # print("product data = ", pp)
+
+            # product = pp.productProfiles[each['product_id']]
+            product = pp[each['product_id']]
+            # product = pp["1"]
+            good_deliveries, bad_deliveries = agent["Good delivery"], agent["Bad delivery"]
 
 
 
             if each['flagged'] == 'N':
                 # agent score
-                score = agent['Good delivery'] + 1
+                # score = agent['Good delivery'] + 1
+                agent["Good delivery"] += 1
+                good_deliveries = agent["Good delivery"]
 
-                # calculate product reputation
-                tsm = product['timestamp']
-                manufacture_date = datetime.fromtimestamp(tsm)
+                data = product["timestamp"].split()
+                temp = [int(each) for each in data]
+                # print(temp)
+                manufacture_date = datetime(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6],)
                 cur_date = datetime.now()
+                # print(manufacture_date)
                 tmedelta = cur_date - manufacture_date
                 days_passed = tmedelta.days
                 days_for_expiry = product['Best before in days']
@@ -101,24 +120,41 @@ class Blockchain:
 
             else:
                 # agent score
-                score = agent['Good delivery'] - 1
+                # score = agent['Bad delivery'] - 1
+                agent["Bad delivery"] += 1
+                bad_deliveries = agent["Bad delivery"]
+
+                product_condition = "Bad"
 
                 # calculate product reputation
                 product['Reputation'] -= 5
 
             # calculate agent reputation based on score
-            print("agent score = ", score)
+            print("Product condition on delivery = ", product_condition)
+            print("Agent ID = ", agent["agent_id"])
+            # print("Agent good deliveries = ", good_deliveries)
+            # print("Agent bad deliveries = ", bad_deliveries)
             agent_reputation = (agent['Good delivery']/(agent['Good delivery'] + agent['Bad delivery']))*100
             agent['Reputation'] = agent_reputation
+            print("Agent reputation",agent_reputation)
 
-            print("agent reputation",agent_reputation)
-            print('product reputation',product['Reputation'])
+            print('Product ID = ', product["product_id"])
+            print('Product reputation',product['Reputation'])
             print('Transcation added successfully!!')
             print('Agent details -:')
-            print(agent)
+            print(json.dumps(agent, indent=3))
             print('Product details -:')
-            print(product)
+            # print("all products = '\n",pp)
+            print(json.dumps(product, indent=3))
             print("\n")
+            # read_product.write([{"name":"shivam"}])
+            # read_product.close()
+        write_product = open("product_data.json", "w")
+        json.dump(pp, write_product, indent=2)
+        write_agent = open("agent_data.json", "w")
+        json.dump(ap, write_agent, indent=2)
+        print("data written successfully")
+
 
     def getTransactions(self, id):
         labels = ['manufacturer', 'transportation',
