@@ -37,9 +37,12 @@ File tree :
 
 Commands to run :
 
-Open the directory in VS code editor
-Goto the main file blockchain.py
-Open the terminal
-Run this main file
+-Open the directory in VS code editor
+
+-Goto the main file blockchain.py
+
+-Open the terminal
+
+-Run this main file
 
 
