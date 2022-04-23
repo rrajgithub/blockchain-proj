@@ -16,7 +16,7 @@ Report link : https://docs.google.com/document/d/1OCjxE40SlkWryVT6azX-_M7Ar7oHuL
 
 
 
-File tree :
+<u>File tree :</u>
 
 
 
@@ -58,7 +58,7 @@ File tree :
 
 
 
-<b>Commands to run :<b>
+<u>Commands to run :<u>
 
 -Open the directory in VS code editor
 
