@@ -41,7 +41,7 @@ Report link : https://docs.google.com/document/d/1OCjxE40SlkWryVT6azX-_M7Ar7oHuL
 
 ┣ 📜README.md
 
-┣ 📜agent_profiles.py
+┣ 📜agent_data.json
 
 ┣ 📜bchain.py
 
@@ -49,10 +49,10 @@ Report link : https://docs.google.com/document/d/1OCjxE40SlkWryVT6azX-_M7Ar7oHuL
 
 ┣ 📜data.py
 
-┣ 📜product_profiles.py
+┣ 📜product_data.json
 
 ┣ 📜smart.py
-
+  📜 user.py
 ┗ 📜tempCodeRunnerFile.py
 
 
