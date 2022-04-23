@@ -13,7 +13,7 @@ File tree :
 
 
 
-<!-- 📦blockchain-proj
+📦blockchain-proj
 ┣ 📂__pycache__
 ┃ ┣ 📜agent_profiles.cpython-38.pyc
 ┃ ┣ 📜bchain.cpython-38.pyc
@@ -30,7 +30,7 @@ File tree :
 ┣ 📜product_profiles.py
 ┣ 📜smart.py
 ┗ 📜tempCodeRunnerFile.py
- -->
+
 
 
 
