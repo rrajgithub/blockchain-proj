@@ -52,7 +52,9 @@ Report link : https://docs.google.com/document/d/1OCjxE40SlkWryVT6azX-_M7Ar7oHuL
 ┣ 📜product_data.json
 
 ┣ 📜smart.py
-  📜 user.py
+
+┣ 📜user.py  
+
 ┗ 📜tempCodeRunnerFile.py
 
 
