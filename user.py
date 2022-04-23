@@ -18,29 +18,32 @@ lis2=["timestamp", "name", "agent_id", "member since", "Supervisor", "Good deliv
 
 print("\n",lis1,"\n\nenter space separated input of product : ")
 
-ip1 = list(input().split(" "))
-print("\n",lis2,"\n\nenter space separated input of agent : ")
-ip2 = list(input().split(" "))
+# ip1 = list(input().split("\n"))
+
+# ip2 = list(input().split("\n"))
 #ip2 = list(input().split() for _ in range(n))
 # print(ip1)
 
 d1=dict()
 d2=dict()
 
-k=0
+# k=0
 for i in lis1:
+    ip=input()
     if i=="product_id" or i=="product_serial" or i=="Reputation" or i=="amount" or i=="Best before in days":
-        d1[i]=int(ip1[k])
+        d1[i]=int(ip)
     else:
-        d1[i]=ip1[k]
-    k=k+1
-k=0
+        d1[i]=ip
+    # k=k+1
+# k=0
+print("\n",lis2,"\n\nenter space separated input of agent : ")
 for i in lis2:
+    ip=input()
     if i=="agent_id" or i=="Good delivery" or i=="Bad delivery" or i=="Reputation":
-        d2[i]=int(ip2[k])
+        d2[i]=int(ip)
     else:
-        d2[i]=ip2[k]
-    k=k+1
+        d2[i]=ip
+    #k=k+1
 
 
 product.append(d1)

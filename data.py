@@ -28,6 +28,19 @@ manufacturer = {
             'flagged': 'N',
             'amount': 2500,
             'role': 'manufacturer',
+        },
+        {
+            'timestamp': datetime.now().timestamp(),
+            'product_id': 2,
+            'product_serial': 5000239,
+            'name': 'table',
+            'manufacturerId': 3,
+            'transporterId': 1,
+            'message': 'This product is in good order',
+            'digital signature': 'approved',
+            'flagged': 'N',
+            'amount': 3500,
+            'role': 'manufacturer',
         }
     ]
 }
