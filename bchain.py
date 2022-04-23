@@ -78,23 +78,19 @@ class Blockchain:
 
             # select agent as per role
             if each['role'] == 'manufacturer':
-                agent = ap[each['manufacturerId']]
-                print('Manufacturer -:')
+                agent = ap[each['manufacturerId'] - 1]
+                # print('Manufacturer -:')
             elif each['role'] == 'transporter':
-                agent = ap[each['transporterId']]
-                print('Transporter -:')
+                agent = ap[each['transporterId'] - 1]
+                # print('Transporter -:')
             elif each['role'] == 'retailer':
-                agent = ap[each['retailerId']]
-                print('Retailer -:')
+                agent = ap[each['retailerId'] - 1]
+                # print('Retailer -:')
             else:
                 assert(False)
 
-            # selct product using id
-            # read_product = open("product_data.json",encoding='utf-8-sig', errors='ignore')
-            # print("product data = ", pp)
 
-            # product = pp.productProfiles[each['product_id']]
-            product = pp[each['product_id']]
+            product = pp[each['product_id'] - 1]
             # product = pp["1"]
             good_deliveries, bad_deliveries = agent["Good delivery"], agent["Bad delivery"]
 
@@ -106,16 +102,18 @@ class Blockchain:
                 agent["Good delivery"] += 1
                 good_deliveries = agent["Good delivery"]
 
-                data = product["timestamp"].split()
+                data = product["MFD"].split()
                 temp = [int(each) for each in data]
                 # print(temp)
-                manufacture_date = datetime(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6],)
+                manufacture_date = datetime(temp[2], temp[1], temp[0])
                 cur_date = datetime.now()
                 # print(manufacture_date)
                 tmedelta = cur_date - manufacture_date
                 days_passed = tmedelta.days
                 days_for_expiry = product['Best before in days']
                 product_reputation = ((days_for_expiry - days_passed)/days_for_expiry)*100
+                if product_reputation < 0 :
+                    product_reputation = 0
                 product['Reputation'] = product_reputation
 
             else:
@@ -127,7 +125,10 @@ class Blockchain:
                 product_condition = "Bad"
 
                 # calculate product reputation
-                product['Reputation'] -= 5
+                if product['Reputation'] < 5 :
+                    product['Reputation'] = 0
+                else:
+                    product['Reputation'] -= 5
 
             # calculate agent reputation based on score
             print("Product condition on delivery = ", product_condition)

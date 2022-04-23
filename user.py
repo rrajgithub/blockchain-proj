@@ -16,7 +16,7 @@ n = 10
 lis1=["timestamp", "product_id", "product_serial", "name", "MFD", "Best before in days", "Reputation", "digital signature", "flagged", "amount"]
 lis2=["timestamp", "name", "agent_id", "member since", "Supervisor", "Good delivery", "Bad delivery", "Reputation", "digital signature", "flagged"]
 
-print("\n",lis1,"\n\nenter space separated input of product : ")
+print("\n",lis1,"\n\nEnter Product details: ")
 
 # ip1 = list(input().split("\n"))
 
@@ -28,7 +28,8 @@ d1=dict()
 d2=dict()
 
 # k=0
-for i in lis1:
+for i, j in zip(lis1, range(len(lis1))):
+    print("Enter " + lis1[j] + " -: ", end=" ")
     ip=input()
     if i=="product_id" or i=="product_serial" or i=="Reputation" or i=="amount" or i=="Best before in days":
         d1[i]=int(ip)
@@ -36,8 +37,10 @@ for i in lis1:
         d1[i]=ip
     # k=k+1
 # k=0
-print("\n",lis2,"\n\nenter space separated input of agent : ")
-for i in lis2:
+# print("\n",lis2,"\n\nenter space separated input of agent : ")
+print("\n",lis2,"\n\nEnter Agent details: ")
+for i, j in zip(lis2, range(len(lis2))):
+    print("Enter " + lis2[j] + " -: ", end=" ")
     ip=input()
     if i=="agent_id" or i=="Good delivery" or i=="Bad delivery" or i=="Reputation":
         d2[i]=int(ip)

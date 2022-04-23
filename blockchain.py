@@ -26,10 +26,13 @@ def main():
     print()
 
     B = bchain.Blockchain()
+    print('**************************************Transactions of Manufacturer**************************************')
     B.add(db.manufacturer)
+    print('**************************************Transactions of Transporter*************************************')
     B.add(db.transportation)
+    print('**************************************Transactions of Retailer************************************')
     B.add(db.retailer)
-    B.getTransactions('all')
+    # B.getTransactions('all')
 
 
 print("\n")

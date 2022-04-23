@@ -4,9 +4,9 @@
     "product_id": 1,
     "product_serial": 50001000,
     "name": "maggi",
-    "MFD": "16-04-2022",
-    "Best before in days": 180,
-    "Reputation": 46.111111111111114,
+    "MFD": "16 02 2022",
+    "Best before in days": 200,
+    "Reputation": 67.0,
     "digital signature": "approved",
     "flagged": "N",
     "amount": 1500
@@ -16,9 +16,9 @@
     "product_id": 2,
     "product_serial": 50002000,
     "name": "Biscuit",
-    "MFD": "11-02-2021",
-    "Best before in days": 270,
-    "Reputation": 54.074074074074076,
+    "MFD": "15 02 2022",
+    "Best before in days": 250,
+    "Reputation": 63.2,
     "digital signature": "Rejected",
     "flagged": "Y",
     "amount": 2500
@@ -28,11 +28,23 @@
     "product_id": 3,
     "product_serial": 5000239,
     "name": "table",
-    "MFD": "15-04-2022",
+    "MFD": "12 01 2021",
     "Best before in days": 300,
-    "Reputation": -55.333333333333336,
+    "Reputation": 0,
     "digital signature": "approved",
-    "flagged": "y",
+    "flagged": "Y",
     "amount": 1200
+  },
+  {
+    "timestamp": "2022 04 23 12 12 12 13",
+    "product_id": 4,
+    "product_serial": 5000240,
+    "name": "Fan",
+    "MFD": "23 02 2021",
+    "Best before in days": 1800,
+    "Reputation": 76.44444444444444,
+    "digital signature": "approved",
+    "flagged": "N",
+    "amount": 4000
   }
 ]
