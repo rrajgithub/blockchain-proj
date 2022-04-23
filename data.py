@@ -1,6 +1,4 @@
 from datetime import datetime
-import agent_profiles as ap
-import product_profiles as pp
 
 manufacturer = {
     'transactions':

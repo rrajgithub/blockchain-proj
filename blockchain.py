@@ -1,17 +1,34 @@
 import bchain
 import data as db
 import smart as z
-import product_profiles as pp
-import agent_profiles as ap
+import json
 
 def main(): 
     
+
+    read_product = open("product_data.json", "r+")
+    pp = json.load(read_product, strict=False)
+
+    read_agent = open("agent_data.json", "r+")
+    ap = json.load(read_agent, strict=False)
+
+    print("Initial Product details -:")
+    for each in pp:
+        print(json.dumps(each, indent=3))
+
+    print()
+    print("Initial Agent details -:")
+    for each in ap:
+        print(json.dumps(each, indent=3))
+
+    read_agent.close()
+    read_product.close()
+    print()
+
     B = bchain.Blockchain()
-    a = B.add(db.manufacturer)
-    b = B.add(db.transportation)
-    c = B.add(db.retailer)
-    # d = B.add(pp.productProfiles)
-    # d = B.add(ap.agentProfiles)
+    B.add(db.manufacturer)
+    B.add(db.transportation)
+    B.add(db.retailer)
     B.getTransactions('all')
 
 

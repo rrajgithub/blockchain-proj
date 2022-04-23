@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": "2022 1 15 23 55 59 342380",
+    "name": "Ramesh Kumar",
+    "agent_id": 1,
+    "member since": "16-04-2022",
+    "Supervisor": "Kishan Raj",
+    "Good delivery": 184,
+    "Bad delivery": 140,
+    "Reputation": 56.79012345679012,
+    "digital signature": "approved",
+    "flagged": "N"
+  },
+  {
+    "timestamp": "2022 1 15 23 55 59 342380",
+    "name": "Suresh Kumar",
+    "agent_id": 2,
+    "member since": "16-04-2022",
+    "Supervisor": "Paresh Raj",
+    "Good delivery": 42,
+    "Bad delivery": 48,
+    "Reputation": 46.666666666666664,
+    "digital signature": "Not approved",
+    "flagged": "Y"
+  },
+  {
+    "timestamp": "2022 1 15 23 55 59 342380",
+    "name": "Harsh Choudhary",
+    "agent_id": 3,
+    "member since": "16-04-2022",
+    "Supervisor": "Kishan Raj",
+    "Good delivery": 152,
+    "Bad delivery": 48,
+    "Reputation": 76.0,
+    "digital signature": "approved",
+    "flagged": "N"
+  }
+]
